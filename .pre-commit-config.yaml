@@ -1,0 +1,32 @@
+fail_fast: true
+repos:
+- repo: local
+  hooks:
+  - id: sort_imports
+    name: sort_imports_check
+    entry: pipenv run sort_imports
+    language: system
+    types: [python]
+    stages: [commit, push]
+  - id: format
+    name: format
+    entry: pipenv run format
+    language: system
+    types: [python]
+    stages: [commit, push]
+    exclude: .*/migrations/.*
+  - id: lint
+    name: lint
+    entry: pipenv run lint
+    language: system
+    types: [python]
+    stages: [commit, push]
+
+  - id: django_test
+    name: django_test
+    entry: pipenv run django_test
+    language: system
+    types: [python]
+    verbose: true
+    pass_filenames: false
+    stages: [push]

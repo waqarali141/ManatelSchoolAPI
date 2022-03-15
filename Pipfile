@@ -1,0 +1,38 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "==4.0.3"
+djangorestframework = "==3.13.1"
+psycopg2 = "==2.9.3"
+drf-nested-routers = "==0.93.4"
+django-filter = "==21.1"
+shortuuid = "==1.0.8"
+
+
+[dev-packages]
+isort = "==5.10.1"
+flake8 = "==3.9.2"
+brunette = "==0.2.4"
+factory-boy = "==3.2.0"
+coverage = "==6.3.2"
+pre-commit = "==2.17.0"
+
+[scripts]
+coverage = "coverage run ./manatel_school_api/manage.py test -d ./manatel_school_api"
+coverage_html = "coverage html"
+coverage_xml = "coverage xml -i"
+sort_imports = "isort ./manatel_school_api"
+sort_imports_check = "isort --check ./manatel_school_api"
+lint = "flake8 ./manatel_school_api"
+format = "brunette ./manatel_school_api"
+django_test = "python ./manatel_school_api/manage.py test --noinput ./app"
+
+
+migrate = "python ./manatel_school_api/manage.py migrate"
+
+
+[requires]
+python_version = "3.8"
